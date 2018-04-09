@@ -1,4 +1,4 @@
-const fastify = require('fastify')();
+const fastify = require('fastify')({ logger: true });
 
 const { PORT = 3000 } = process.env;
 
@@ -27,5 +27,5 @@ fastify.listen(PORT, (err) => {
     throw err;
   }
 
-  console.log(`server listening on ${fastify.server.address().port}`);
+  fastify.log.info(`server listening on ${fastify.server.address().port}`);
 });
